@@ -6,6 +6,24 @@ from datetime import datetime
 from functools import wraps
 from flask_wtf.csrf import CSRFProtect
 
+# Load environment variables
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    print("Environment variables loaded from .env file")
+except ImportError:
+    print("python-dotenv not available, using system environment variables")
+
+# Setup structured logging
+try:
+    from utils.logger import setup_logging, get_logger, log_security_event, log_user_action, log_system_event, log_error
+    setup_logging()
+    app_logger = get_logger(__name__)
+    app_logger.info("Biometric Crime Detection System starting up")
+except ImportError as e:
+    print(f"Warning: Could not setup structured logging: {e}")
+    app_logger = logging.getLogger(__name__)
+
 # Try to import cv2, but handle the case where it's not available (like on Heroku)
 try:
     import cv2

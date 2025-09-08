@@ -300,8 +300,9 @@ class RealFingerprintScanner:
                                 'device_info': devices,
                                 'platform': system
                             }
-                except (subprocess.TimeoutExpired, subprocess.SubprocessError):
-                    pass
+                except (subprocess.TimeoutExpired, subprocess.SubprocessError) as e:
+                    print(f"Warning: Failed to check Windows fingerprint devices: {e}")
+                    # Continue with fallback detection methods
                     
             elif system == 'linux':
                 # Check for USB devices on Linux
@@ -316,8 +317,9 @@ class RealFingerprintScanner:
                                 'device_info': 'USB fingerprint device detected',
                                 'platform': system
                             }
-                except (subprocess.TimeoutExpired, subprocess.SubprocessError):
-                    pass
+                except (subprocess.TimeoutExpired, subprocess.SubprocessError) as e:
+                    print(f"Warning: Failed to check Linux USB devices: {e}")
+                    # Continue with fallback detection methods
                     
             # Check for common fingerprint scanner software/drivers
             common_paths = [
