@@ -6,6 +6,10 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE, 'uploads', 'face_images')
 ENCODINGS_FILE = os.path.join(os.path.dirname(__file__), 'encodings.pkl')
 
+def train_model():
+    """Alias for encode_faces for backward compatibility"""
+    return encode_faces()
+
 def encode_faces():
     known_encodings = []
     known_names = []
