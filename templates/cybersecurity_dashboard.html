@@ -1909,6 +1909,9 @@
                 <div class="user-info">
                     <span>Welcome, {{ session.admin_username }}</span>
                     <span class="badge">{{ data.admin_role.title() }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                     {% if has_permission('export_reports') %}
                     <div class="export-dropdown">
                         <button class="btn btn-export dropdown-toggle" onclick="toggleExportMenu()"><i class="fas fa-download"></i> Export Report <i class="fas fa-chevron-down"></i></button>
