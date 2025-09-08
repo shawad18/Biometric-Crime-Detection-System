@@ -23,18 +23,25 @@ def create_db():
         )
     ''')
 
-    # Insert default admin user username: admin, password: admin123
+    # Clear existing admin accounts and insert new ones
     import bcrypt
     try:
-        # Regular admin
-        hashed_pw = bcrypt.hashpw(b"admin123", bcrypt.gensalt())
-        cursor.execute("INSERT INTO admin (username, password, role) VALUES (?, ?, ?)", ("admin", hashed_pw, "admin"))
+        # Clear all existing admin accounts
+        cursor.execute("DELETE FROM admin")
+        print("[INFO] Cleared all existing admin accounts")
         
-        # Superadmin with higher privileges
-        super_pw = bcrypt.hashpw(b"superadmin123", bcrypt.gensalt())
-        cursor.execute("INSERT INTO admin (username, password, role) VALUES (?, ?, ?)", ("superadmin", super_pw, "superadmin"))
+        # Insert shawad18 as admin
+        admin_pw = bcrypt.hashpw(b"Sunee@18", bcrypt.gensalt())
+        cursor.execute("INSERT INTO admin (username, password, role) VALUES (?, ?, ?)", ("shawad18", admin_pw, "admin"))
+        print("[INFO] Created admin account: shawad18")
+        
+        # Insert shamsu as superadmin
+        super_pw = bcrypt.hashpw(b"Sunainah@18", bcrypt.gensalt())
+        cursor.execute("INSERT INTO admin (username, password, role) VALUES (?, ?, ?)", ("shamsu", super_pw, "superadmin"))
+        print("[INFO] Created superadmin account: shamsu")
+        
     except Exception as e:
-        print(f"[INFO] Admin users already exist or error: {e}")
+        print(f"[ERROR] Failed to create admin accounts: {e}")
         pass
 
     conn.commit()
