@@ -16,14 +16,12 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
-            min-height: 100vh;
+            min-height: calc(100vh - 120px);
         }
         
-        .logout-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+        /* Adjust layout for fixed navigation */
+        body {
+            padding-top: 0;
         }
         
         .card-links {
@@ -91,10 +89,11 @@
         // Apply universal theme classes
         document.body.classList.add('cyberpunk-page');
     </script>
-    <div class="dashboard-container">
-        <a href="/api/auth/logout" class="btn btn-danger logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
+    
+    <!-- Include Universal Navigation -->
+    {% include 'components/universal_navbar.html' %}
+    
+    <div class="dashboard-container" style="margin-top: 120px; padding-top: 2rem;">
         
         <div class="card dashboard-header" style="text-align: center; margin-bottom: 2rem;">
             <h1><i class="fas fa-fingerprint"></i> Biometric Crime Detection System</h1>

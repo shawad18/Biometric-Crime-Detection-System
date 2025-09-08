@@ -1878,26 +1878,20 @@
     <script src="/js/universal-theme.js"></script>
 </head>
 <body>
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
+    <!-- Include Universal Navigation -->
+    {% include 'components/universal_navbar.html' %}
     
-    <!-- Mobile Menu Backdrop -->
-    <div class="mobile-backdrop" onclick="closeMobileMenu()"></div>
-    
-    <div class="dashboard-container">
-        <!-- Sidebar Navigation -->
-        <div class="sidebar">
-            <h2><i class="fas fa-shield-alt"></i> Security Hub</h2>
-            <ul class="nav-menu">
-                <li><a href="#overview" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
-                <li><a href="#threats" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Threat Monitor</a></li>
-                <li><a href="#cases" class="nav-link"><i class="fas fa-folder-open"></i> Case Management</a></li>
-                <li><a href="#analytics" class="nav-link"><i class="fas fa-chart-line"></i> Analytics</a></li>
-                <li><a href="#alerts" class="nav-link"><i class="fas fa-bell"></i> Alerts</a></li>
-                <li><a href="{{ url_for('original_home') }}"><i class="fas fa-home"></i> Main System</a></li>
-                <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    <div class="dashboard-container" style="margin-top: 120px;">
+        <!-- Content sections navigation (internal page navigation) -->
+        <div class="content-nav" style="background: var(--bg-card); padding: 1rem; margin-bottom: 2rem; border-radius: 8px; border: 1px solid rgba(76, 201, 240, 0.3);">
+            <ul class="section-nav" style="display: flex; list-style: none; margin: 0; padding: 0; gap: 1rem; flex-wrap: wrap;">
+                <li><a href="#overview" class="section-link active" style="display: flex; align-items: center; padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 6px; transition: all var(--transition-fast);"><i class="fas fa-tachometer-alt" style="margin-right: 0.5rem;"></i> Overview</a></li>
+                <li><a href="#threats" class="section-link" style="display: flex; align-items: center; padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 6px; transition: all var(--transition-fast);"><i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i> Threat Monitor</a></li>
+                <li><a href="#cases" class="section-link" style="display: flex; align-items: center; padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 6px; transition: all var(--transition-fast);"><i class="fas fa-folder-open" style="margin-right: 0.5rem;"></i> Case Management</a></li>
+                <li><a href="#analytics" class="section-link" style="display: flex; align-items: center; padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 6px; transition: all var(--transition-fast);"><i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i> Analytics</a></li>
+                <li><a href="#alerts" class="section-link" style="display: flex; align-items: center; padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 6px; transition: all var(--transition-fast);"><i class="fas fa-bell" style="margin-right: 0.5rem;"></i> Alerts</a></li>
+            </ul>
+        </div>
             </ul>
         </div>
         
